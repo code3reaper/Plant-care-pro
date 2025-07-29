@@ -12,7 +12,7 @@
 
 **🚀 A comprehensive Flask web application that combines advanced machine learning, real-time weather data, and AI-powered chat assistance to help farmers and gardeners maintain healthy plants and optimize their agricultural practices.**
 
-[🌐 Live Demo](#) • [📖 Documentation](#installation-steps) • [🐛 Report Bug](https://github.com/code3reaper/plant-care-pro/issues/new) • [💡 Request Feature](https://github.com/code3reaper/plant-care-pro/issues/new)
+[🌐 Live Demo](#) • [📖 Documentation](#-installation-steps) • [🐛 Report Bug](https://github.com/code3reaper/plant-care-pro/issues/new) • [💡 Request Feature](https://github.com/code3reaper/plant-care-pro/issues/new)
 
 </div>
 
