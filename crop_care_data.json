@@ -1,0 +1,262 @@
+{
+  "Tomato": {
+    "planting": {
+      "season": "Spring to early summer",
+      "soil_temp": "60-70°F (15-21°C)",
+      "depth": "1/4 to 1/2 inch deep",
+      "spacing": "18-24 inches apart",
+      "soil_ph": "6.0-6.8"
+    },
+    "care": {
+      "watering": "Deep, consistent watering. 1-2 inches per week",
+      "fertilizer": "Balanced fertilizer (10-10-10) at planting, then high-potassium fertilizer during fruiting",
+      "support": "Stakes or cages for support, especially indeterminate varieties",
+      "pruning": "Remove suckers and lower leaves touching the ground"
+    },
+    "harvesting": {
+      "time": "70-100 days from planting",
+      "signs": "Fruits are firm and fully colored but not overripe",
+      "method": "Pick regularly to encourage continued production"
+    },
+    "common_problems": [
+      "Blossom end rot (calcium deficiency/inconsistent watering)",
+      "Cracking (irregular watering)",
+      "Late blight (fungal disease)",
+      "Hornworms (pest control needed)"
+    ]
+  },
+  "Potato": {
+    "planting": {
+      "season": "Early spring, 2-3 weeks before last frost",
+      "soil_temp": "45-50°F (7-10°C)",
+      "depth": "4 inches deep",
+      "spacing": "12 inches apart in rows 3 feet apart",
+      "soil_ph": "5.8-6.5"
+    },
+    "care": {
+      "watering": "Regular watering, especially during tuber formation",
+      "fertilizer": "Low-nitrogen fertilizer to avoid excessive foliage growth",
+      "hilling": "Hill soil around plants as they grow to prevent green potatoes",
+      "mulching": "Mulch to retain moisture and suppress weeds"
+    },
+    "harvesting": {
+      "time": "70-120 days depending on variety",
+      "signs": "Plants begin to die back and yellow",
+      "method": "Dig carefully to avoid damaging tubers"
+    },
+    "common_problems": [
+      "Late blight (fungal disease)",
+      "Early blight (fungal disease)",
+      "Colorado potato beetle",
+      "Scab (plant in well-draining soil)"
+    ]
+  },
+  "Corn": {
+    "planting": {
+      "season": "Late spring when soil temperature reaches 60°F",
+      "soil_temp": "60-95°F (15-35°C)",
+      "depth": "1-2 inches deep",
+      "spacing": "8-12 inches apart in rows 30-36 inches apart",
+      "soil_ph": "6.0-6.8"
+    },
+    "care": {
+      "watering": "Deep watering, especially during tasseling and ear development",
+      "fertilizer": "High-nitrogen fertilizer, side-dress when plants are knee-high",
+      "support": "Generally doesn't need support but ensure good spacing",
+      "pest_control": "Watch for corn borers and earworms"
+    },
+    "harvesting": {
+      "time": "60-100 days depending on variety",
+      "signs": "Silks are brown and dry, kernels are plump and milky",
+      "method": "Twist and pull ears downward"
+    },
+    "common_problems": [
+      "Corn borers (pest control)",
+      "Earworms (check ears regularly)",
+      "Rust diseases (ensure good air circulation)",
+      "Poor pollination (plant in blocks, not single rows)"
+    ]
+  },
+  "Apple": {
+    "planting": {
+      "season": "Early spring or fall",
+      "soil_temp": "Plant when dormant",
+      "depth": "Same depth as in nursery container",
+      "spacing": "15-20 feet apart depending on rootstock",
+      "soil_ph": "6.0-7.0"
+    },
+    "care": {
+      "watering": "Deep watering during dry periods, especially first few years",
+      "fertilizer": "Balanced fertilizer in early spring",
+      "pruning": "Annual pruning in late winter to maintain shape and health",
+      "pest_management": "Integrated pest management for insects and diseases"
+    },
+    "harvesting": {
+      "time": "Late summer to fall, depending on variety",
+      "signs": "Fruits separate easily from tree when lifted and twisted",
+      "method": "Handle carefully to avoid bruising"
+    },
+    "common_problems": [
+      "Apple scab (fungal disease)",
+      "Fire blight (bacterial disease)",
+      "Codling moth (pest)",
+      "Apple maggot (pest control needed)"
+    ]
+  },
+  "Grape": {
+    "planting": {
+      "season": "Early spring when dormant",
+      "soil_temp": "Plant after last frost",
+      "depth": "Plant at same depth as in container",
+      "spacing": "6-8 feet apart",
+      "soil_ph": "6.0-7.0"
+    },
+    "care": {
+      "watering": "Deep, infrequent watering once established",
+      "fertilizer": "Light fertilization; avoid over-fertilizing",
+      "support": "Trellis system required for proper growth",
+      "pruning": "Annual dormant season pruning is essential"
+    },
+    "harvesting": {
+      "time": "Late summer to early fall",
+      "signs": "Grapes are sweet, seeds are brown, stems begin to dry",
+      "method": "Cut clusters with sharp shears"
+    },
+    "common_problems": [
+      "Powdery mildew (fungal disease)",
+      "Black rot (fungal disease)",
+      "Japanese beetles (pest control)",
+      "Birds (netting may be needed)"
+    ]
+  },
+  "Pepper": {
+    "planting": {
+      "season": "Late spring after soil warms",
+      "soil_temp": "65-70°F (18-21°C)",
+      "depth": "1/4 inch deep for seeds",
+      "spacing": "12-18 inches apart",
+      "soil_ph": "6.0-6.8"
+    },
+    "care": {
+      "watering": "Consistent moisture, avoid overwatering",
+      "fertilizer": "Balanced fertilizer, avoid high nitrogen",
+      "support": "May need staking for larger varieties",
+      "mulching": "Mulch to retain moisture and regulate soil temperature"
+    },
+    "harvesting": {
+      "time": "60-90 days from transplanting",
+      "signs": "Peppers reach desired size and color",
+      "method": "Cut peppers with shears, don't pull"
+    },
+    "common_problems": [
+      "Blossom end rot (calcium deficiency)",
+      "Aphids (pest control)",
+      "Bacterial spot",
+      "Sunscald (provide afternoon shade in hot climates)"
+    ]
+  },
+  "Strawberry": {
+    "planting": {
+      "season": "Early spring or fall",
+      "soil_temp": "50-60°F (10-15°C)",
+      "depth": "Crown level with soil surface",
+      "spacing": "12-18 inches apart",
+      "soil_ph": "5.5-6.5"
+    },
+    "care": {
+      "watering": "Regular watering, especially during fruit development",
+      "fertilizer": "Balanced fertilizer in early spring",
+      "mulching": "Straw mulch to keep berries clean and retain moisture",
+      "runner_management": "Remove runners for larger berries or allow for new plants"
+    },
+    "harvesting": {
+      "time": "60-90 days from planting",
+      "signs": "Berries are fully red and slightly soft",
+      "method": "Pick every 2-3 days during season"
+    },
+    "common_problems": [
+      "Gray mold (Botrytis)",
+      "Leaf spot diseases",
+      "Slugs and snails",
+      "Verticillium wilt"
+    ]
+  },
+  "Squash": {
+    "planting": {
+      "season": "Late spring after last frost",
+      "soil_temp": "65-70°F (18-21°C)",
+      "depth": "1 inch deep",
+      "spacing": "3-4 feet apart (bush varieties), 6-8 feet (vining varieties)",
+      "soil_ph": "6.0-6.8"
+    },
+    "care": {
+      "watering": "Deep watering at base of plant, avoid wetting leaves",
+      "fertilizer": "Rich, well-amended soil with compost",
+      "support": "Trellis for vining varieties if desired",
+      "pest_control": "Watch for squash bugs and cucumber beetles"
+    },
+    "harvesting": {
+      "time": "50-70 days for summer squash, 100-120 for winter squash",
+      "signs": "Summer: tender skin, winter: hard rind and dry stem",
+      "method": "Cut with sharp knife, leaving short stem"
+    },
+    "common_problems": [
+      "Squash bugs (pest control)",
+      "Cucumber beetles",
+      "Powdery mildew",
+      "Squash vine borers"
+    ]
+  },
+  "Cherry": {
+    "planting": {
+      "season": "Early spring or fall when dormant",
+      "soil_temp": "Plant when dormant",
+      "depth": "Same depth as nursery container",
+      "spacing": "20-25 feet apart",
+      "soil_ph": "6.0-7.0"
+    },
+    "care": {
+      "watering": "Deep watering during dry periods, especially when young",
+      "fertilizer": "Balanced fertilizer in early spring",
+      "pruning": "Annual pruning to maintain shape and remove dead wood",
+      "pest_management": "Monitor for cherry fruit fly and brown rot"
+    },
+    "harvesting": {
+      "time": "Mid to late summer depending on variety",
+      "signs": "Fruits are fully colored and slightly soft",
+      "method": "Pick with stems attached to prevent disease entry"
+    },
+    "common_problems": [
+      "Brown rot (fungal disease)",
+      "Cherry fruit fly",
+      "Powdery mildew",
+      "Bacterial canker"
+    ]
+  },
+  "Peach": {
+    "planting": {
+      "season": "Early spring when dormant",
+      "soil_temp": "Plant after last frost danger",
+      "depth": "Same depth as in container",
+      "spacing": "15-20 feet apart",
+      "soil_ph": "6.0-7.0"
+    },
+    "care": {
+      "watering": "Deep watering during dry periods and fruit development",
+      "fertilizer": "Balanced fertilizer in early spring",
+      "pruning": "Annual pruning for shape and disease prevention",
+      "thinning": "Thin fruits to 4-6 inches apart for larger, better quality fruit"
+    },
+    "harvesting": {
+      "time": "Mid to late summer",
+      "signs": "Fruits give slightly to gentle pressure and have full color",
+      "method": "Twist and lift gently, or cut stem"
+    },
+    "common_problems": [
+      "Peach leaf curl (fungal disease)",
+      "Brown rot",
+      "Oriental fruit moth",
+      "Bacterial spot"
+    ]
+  }
+}
