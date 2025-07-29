@@ -67,10 +67,12 @@ Plant Care Pro revolutionizes plant care by combining cutting-edge AI technology
 <div align="center">
 
 ### 🏠 **Dashboard Overview**
-![Dashboard](https://via.placeholder.com/800x400/2d3748/ffffff?text=Dashboard+Preview)
+![Dashboard Overview 1](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/dashboard_1.png)
+![Dashboard Overview 2](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/dashboard_2.png)
 
 ### 🔍 **Disease Detection Interface**
-![Disease Detection](https://via.placeholder.com/800x400/2d3748/ffffff?text=Disease+Detection+Interface)
+![Disease Detection 1](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/disease_detection_interface_1.png)
+![Disease Detection 2](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/disease_detection_interface_2.png)
 
 ### 💬 **AI Chat Assistant**
 ![AI Chat](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/ai_chat_assistant.png)
