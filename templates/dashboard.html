@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Plant Care Pro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Welcome Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="mb-1">
+                        <i class="fas fa-tachometer-alt text-success me-2"></i>
+                        Welcome back, {{ current_user.username }}!
+                    </h2>
+                    <p class="text-muted">Manage your plant health and farming activities</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('detect') }}" class="btn btn-success">
+                        <i class="fas fa-camera me-2"></i>New Detection
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success bg-gradient text-white rounded p-3 me-3">
+                            <i class="fas fa-search-plus fa-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1">{{ stats.detections }}</h3>
+                            <p class="text-muted mb-0">Disease Detections</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary bg-gradient text-white rounded p-3 me-3">
+                            <i class="fas fa-cloud-sun fa-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1">{{ stats.weather_queries }}</h3>
+                            <p class="text-muted mb-0">Weather Queries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-info bg-gradient text-white rounded p-3 me-3">
+                            <i class="fas fa-seedling fa-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1">{{ stats.crop_care_queries }}</h3>
+                            <p class="text-muted mb-0">Crop Care Queries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-warning bg-gradient text-white rounded p-3 me-3">
+                            <i class="fas fa-comments fa-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1">{{ stats.chat_messages }}</h3>
+                            <p class="text-muted mb-0">AI Conversations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Quick Actions</h4>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('detect') }}" class="card text-decoration-none h-100 border-success">
+                        <div class="card-body text-center">
+                            <i class="fas fa-camera fa-2x text-success mb-3"></i>
+                            <h6 class="card-title">Detect Disease</h6>
+                            <p class="card-text text-muted small">Upload plant images for AI analysis</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('weather') }}" class="card text-decoration-none h-100 border-primary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-cloud-sun fa-2x text-primary mb-3"></i>
+                            <h6 class="card-title">Check Weather</h6>
+                            <p class="card-text text-muted small">Get weather insights for farming</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('crop_care') }}" class="card text-decoration-none h-100 border-info">
+                        <div class="card-body text-center">
+                            <i class="fas fa-seedling fa-2x text-info mb-3"></i>
+                            <h6 class="card-title">Crop Care</h6>
+                            <p class="card-text text-muted small">Access comprehensive crop guides</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('chat') }}" class="card text-decoration-none h-100 border-warning">
+                        <div class="card-body text-center">
+                            <i class="fas fa-robot fa-2x text-warning mb-3"></i>
+                            <h6 class="card-title">AI Assistant</h6>
+                            <p class="card-text text-muted small">Chat with agricultural expert AI</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history text-success me-2"></i>
+                        Recent Disease Detections
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_detections %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Disease</th>
+                                        <th>Confidence</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for detection in recent_detections %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ detection.disease_name }}</strong>
+                                        </td>
+                                        <td>
+                                            <div class="progress" style="height: 8px;">
+                                                <div class="progress-bar bg-success" role="progressbar" 
+                                                     style="width: {{ (detection.confidence * 100)|round }}%"></div>
+                                            </div>
+                                            <small class="text-muted">{{ (detection.confidence * 100)|round }}%</small>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">{{ detection.detected_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                        </td>
+                                        <td>
+                                            {% if detection.confidence > 0.85 %}
+                                                <span class="badge bg-success">High Confidence</span>
+                                            {% elif detection.confidence > 0.75 %}
+                                                <span class="badge bg-warning">Medium Confidence</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">Low Confidence</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-camera fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">No disease detections yet. Start by uploading plant images!</p>
+                            <a href="{{ url_for('detect') }}" class="btn btn-success">
+                                <i class="fas fa-camera me-2"></i>Start Detection
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

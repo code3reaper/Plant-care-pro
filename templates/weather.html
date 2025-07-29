@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block title %}Weather - Plant Care Pro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-1">
+                <i class="fas fa-cloud-sun text-primary me-2"></i>
+                Agricultural Weather
+            </h2>
+            <p class="text-muted">Get weather insights and farming recommendations for your location</p>
+        </div>
+    </div>
+
+    <!-- Weather Search -->
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-search me-2"></i>
+                        Weather Lookup
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                            <input type="text" class="form-control" name="location" 
+                                   placeholder="Enter city name or zip code" required
+                                   value="{{ request.form.location if request.form.location }}">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search me-1"></i>Get Weather
+                            </button>
+                        </div>
+                        <div class="form-text">
+                            Examples: "New York", "London", "90210", "Paris, France"
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if weather_data %}
+    <!-- Current Weather -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-thermometer-half me-2"></i>
+                        Current Weather - {{ weather_data.location }}, {{ weather_data.country }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center">
+                            <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@4x.png" 
+                                 alt="{{ weather_data.description }}" class="img-fluid">
+                            <h2 class="display-4 fw-bold text-primary">{{ weather_data.temperature }}°C</h2>
+                            <p class="lead">{{ weather_data.description }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-thermometer-half text-danger me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Feels Like</small>
+                                            <div class="fw-bold">{{ weather_data.feels_like }}°C</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-tint text-info me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Humidity</small>
+                                            <div class="fw-bold">{{ weather_data.humidity }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-wind text-success me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Wind Speed</small>
+                                            <div class="fw-bold">{{ weather_data.wind_speed }} m/s</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-compress-arrows-alt text-warning me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Pressure</small>
+                                            <div class="fw-bold">{{ weather_data.pressure }} hPa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-sunrise text-warning me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Sunrise</small>
+                                            <div class="fw-bold">{{ weather_data.sunrise }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-sunset text-orange me-2"></i>
+                                        <div>
+                                            <small class="text-muted">Sunset</small>
+                                            <div class="fw-bold">{{ weather_data.sunset }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Farming Advice -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        Agricultural Recommendations
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for advice in weather_data.farming_advice %}
+                        <div class="col-md-6 mb-2">
+                            <div class="alert alert-info mb-2 py-2">
+                                {{ advice }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5-Day Forecast -->
+    {% if weather_data.forecast %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-week me-2"></i>
+                        5-Day Forecast
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for day in weather_data.forecast %}
+                        <div class="col-md-2-4 col-sm-6">
+                            <div class="text-center p-3 border rounded">
+                                <h6 class="mb-2">{{ day.day }}</h6>
+                                <img src="http://openweathermap.org/img/wn/{{ day.icon }}@2x.png" 
+                                     alt="{{ day.description }}" class="img-fluid mb-2" style="max-height: 50px;">
+                                <div class="fw-bold text-primary mb-1">{{ day.temperature }}°C</div>
+                                <small class="text-muted">{{ day.description }}</small>
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        <i class="fas fa-tint me-1"></i>{{ day.humidity }}%
+                                        <i class="fas fa-wind ms-2 me-1"></i>{{ day.wind_speed }}m/s
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% else %}
+    <!-- No Weather Data -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-cloud-sun fa-4x text-muted mb-3"></i>
+                    <h5 class="text-muted">Enter a location to get weather information</h5>
+                    <p class="text-muted">Get real-time weather data and agricultural recommendations for your farming area.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.col-md-2-4 {
+    flex: 0 0 auto;
+    width: 20%;
+}
+
+@media (max-width: 768px) {
+    .col-md-2-4 {
+        width: 50%;
+    }
+}
+</style>
+{% endblock %}

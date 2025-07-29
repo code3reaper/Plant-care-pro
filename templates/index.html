@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Plant Care Pro - AI-Powered Plant Disease Detection{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-success bg-gradient text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-leaf me-3"></i>
+                    Plant Care Pro
+                </h1>
+                <p class="lead mb-4">
+                    Advanced AI-powered plant disease detection and comprehensive agricultural assistance. 
+                    Protect your crops with cutting-edge technology and expert guidance.
+                </p>
+                <div class="d-flex gap-3">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('detect') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-camera me-2"></i>Start Detection
+                        </a>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Get Started
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="fas fa-microscope fa-10x text-white opacity-75"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Advanced Agricultural Solutions</h2>
+                <p class="lead text-muted">Everything you need to keep your plants healthy and productive</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-search-plus fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Disease Detection</h5>
+                        <p class="card-text text-muted">
+                            Upload plant images for instant AI-powered disease identification with 95% accuracy across 37+ plant diseases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-cloud-sun fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Weather Insights</h5>
+                        <p class="card-text text-muted">
+                            Real-time weather data with agricultural recommendations to optimize your farming decisions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-info bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-seedling fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Crop Care Guide</h5>
+                        <p class="card-text text-muted">
+                            Comprehensive planting, care, and harvesting guides for all major crops and fruit trees.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-warning bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-robot fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">AI Assistant</h5>
+                        <p class="card-text text-muted">
+                            Chat with our AI agricultural expert for personalized farming advice and problem-solving.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section -->
+{% if not current_user.is_authenticated %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Try Our Demo</h3>
+                <p class="mb-4">
+                    Experience the power of our AI-powered plant disease detection system. 
+                    Login with our demo account to explore all features without registration.
+                </p>
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h6 class="card-title text-success">
+                            <i class="fas fa-key me-2"></i>Demo Credentials
+                        </h6>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <strong>Username:</strong> farmer1<br>
+                                <strong>Password:</strong> password123
+                            </div>
+                            <div class="col-sm-6">
+                                <strong>Username:</strong> demo<br>
+                                <strong>Password:</strong> demo123
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="{{ url_for('login') }}" class="btn btn-success">
+                        <i class="fas fa-sign-in-alt me-2"></i>Try Demo
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="bg-success bg-gradient text-white p-4 rounded">
+                    <i class="fas fa-chart-line fa-5x mb-3"></i>
+                    <h5>95% Accuracy</h5>
+                    <p>Industry-leading disease detection powered by advanced machine learning</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Statistics Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="h2 fw-bold text-success">37+</div>
+                <p class="text-muted">Plant Diseases</p>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="h2 fw-bold text-primary">95%</div>
+                <p class="text-muted">Detection Accuracy</p>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="h2 fw-bold text-info">10+</div>
+                <p class="text-muted">Crop Varieties</p>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="h2 fw-bold text-warning">24/7</div>
+                <p class="text-muted">AI Support</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

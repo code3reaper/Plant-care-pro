@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}AI Assistant - Plant Care Pro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="fas fa-robot text-warning me-2"></i>
+                AI Agricultural Assistant
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm" style="height: 70vh;">
+                <!-- Chat Header -->
+                <div class="card-header bg-warning text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-robot fa-lg me-2"></i>
+                        <div>
+                            <h5 class="mb-0">Agricultural Expert AI</h5>
+                            <small>Ask me anything about farming, plant care, and agriculture</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="card-body p-0 d-flex flex-column">
+                    <div class="flex-grow-1 p-3" id="chatMessages" style="overflow-y: auto; max-height: calc(70vh - 200px); word-wrap: break-word;">
+                        {% if chat_history %}
+                            {% for chat in chat_history %}
+                            <!-- User Message -->
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="bg-primary text-white rounded px-3 py-2" style="max-width: 70%;">
+                                    <div class="mb-1">{{ chat.user_message }}</div>
+                                    <small class="opacity-75">{{ chat.created_at.strftime('%H:%M') }}</small>
+                                </div>
+                                <div class="ms-2">
+                                    <i class="fas fa-user-circle fa-lg text-primary"></i>
+                                </div>
+                            </div>
+
+                            <!-- AI Response -->
+                            <div class="d-flex justify-content-start mb-3">
+                                <div class="me-2">
+                                    <i class="fas fa-robot fa-lg text-warning"></i>
+                                </div>
+                                <div class="ai-response bg-light border rounded px-3 py-2 text-dark shadow-sm" style="max-width: 85%; min-width: 300px;">
+                                    <div class="ai-response-content mb-1">{{ chat.ai_response|safe }}</div>
+                                    <small class="text-muted"><i class="fas fa-clock me-1"></i>{{ chat.created_at.strftime('%H:%M') }}</small>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                        <!-- Welcome Message -->
+                        <div class="d-flex justify-content-start mb-3">
+                            <div class="me-2">
+                                <i class="fas fa-robot fa-lg text-warning"></i>
+                            </div>
+                            <div class="ai-response bg-light border rounded px-3 py-2 text-dark shadow-sm">
+                                <div class="ai-response-content mb-1">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="fs-4">👋</span>
+                                        <strong class="ms-2 text-success">Hello! I'm your AI agricultural assistant.</strong>
+                                    </div>
+                                    <p class="mb-2">I can help you with:</p>
+                                    <ul class="list-unstyled mb-2">
+                                        <li class="mb-1"><i class="fas fa-leaf text-success me-2"></i>Plant disease identification and treatment</li>
+                                        <li class="mb-1"><i class="fas fa-seedling text-primary me-2"></i>Crop care and farming best practices</li>
+                                        <li class="mb-1"><i class="fas fa-bug text-warning me-2"></i>Pest management advice</li>
+                                        <li class="mb-1"><i class="fas fa-mountain text-info me-2"></i>Soil health and nutrition guidance</li>
+                                        <li class="mb-1"><i class="fas fa-cloud-sun text-secondary me-2"></i>Weather-related farming decisions</li>
+                                    </ul>
+                                    <p class="mb-0 fw-bold text-primary">What would you like to know?</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Quick Questions -->
+                    <div class="border-top bg-light p-3">
+                        <div class="mb-2">
+                            <small class="text-muted fw-bold">Quick Questions:</small>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-secondary btn-sm quick-question" 
+                                    data-question="How do I prevent tomato blight?">
+                                Tomato Blight Prevention
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm quick-question" 
+                                    data-question="What's the best fertilizer for corn?">
+                                Corn Fertilizer
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm quick-question" 
+                                    data-question="How often should I water my vegetable garden?">
+                                Watering Schedule
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm quick-question" 
+                                    data-question="Signs of nutrient deficiency in plants?">
+                                Nutrient Deficiency
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="border-top p-3">
+                        <form method="POST" id="chatForm">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="message" id="messageInput"
+                                       placeholder="Ask me about farming, plant care, diseases, or any agricultural question..."
+                                       required autocomplete="off">
+                                <button class="btn btn-warning" type="submit" id="sendBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h6 class="mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        Tips for Better Responses
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Be specific about your plant type and problem
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Include details about symptoms you observe
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Mention your location/climate if relevant
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Ask about both treatment and prevention
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageInput = document.getElementById('messageInput');
+    const chatForm = document.getElementById('chatForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const quickQuestions = document.querySelectorAll('.quick-question');
+
+    // Auto-scroll to bottom of chat
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Initialize scroll position
+    scrollToBottom();
+
+    // Handle quick questions
+    quickQuestions.forEach(button => {
+        button.addEventListener('click', function() {
+            const question = this.getAttribute('data-question');
+            messageInput.value = question;
+            messageInput.focus();
+        });
+    });
+
+    // Handle form submission
+    chatForm.addEventListener('submit', function() {
+        if (messageInput.value.trim()) {
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        }
+    });
+
+    // Handle enter key in textarea
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            chatForm.submit();
+        }
+    });
+
+    // Focus message input
+    messageInput.focus();
+});
+</script>
+{% endblock %}

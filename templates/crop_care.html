@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}Crop Care - Plant Care Pro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-1">
+                <i class="fas fa-seedling text-success me-2"></i>
+                Crop Care Guide
+            </h2>
+            <p class="text-muted">Comprehensive planting, care, and harvesting information for your crops</p>
+        </div>
+    </div>
+
+    {% if crop_name and crop_info %}
+    <!-- Detailed Crop Information -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('crop_care') }}" class="text-decoration-none">Crop Care</a></li>
+                    <li class="breadcrumb-item active">{{ crop_name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-leaf me-2"></i>
+                        {{ crop_name }} Care Guide
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Planting Information -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Planting Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><strong>Season:</strong></td>
+                            <td>{{ crop_info.planting.season }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Soil Temperature:</strong></td>
+                            <td>{{ crop_info.planting.soil_temp }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Planting Depth:</strong></td>
+                            <td>{{ crop_info.planting.depth }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spacing:</strong></td>
+                            <td>{{ crop_info.planting.spacing }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Soil pH:</strong></td>
+                            <td>{{ crop_info.planting.soil_ph }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Care Instructions -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tools me-2"></i>
+                        Care Instructions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% for key, value in crop_info.care.items() %}
+                    <div class="mb-3">
+                        <h6 class="text-info">{{ key.replace('_', ' ').title() }}:</h6>
+                        <p class="mb-0">{{ value }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Harvesting and Problems -->
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-cut me-2"></i>
+                        Harvesting Guide
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6 class="text-warning">Time to Harvest:</h6>
+                        <p>{{ crop_info.harvesting.time }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-warning">Signs of Readiness:</h6>
+                        <p>{{ crop_info.harvesting.signs }}</p>
+                    </div>
+                    <div class="mb-0">
+                        <h6 class="text-warning">Harvesting Method:</h6>
+                        <p class="mb-0">{{ crop_info.harvesting.method }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Common Problems
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        {% for problem in crop_info.common_problems %}
+                        <li class="mb-2">
+                            <i class="fas fa-bug text-danger me-2"></i>
+                            {{ problem }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <!-- Crop Selection Grid -->
+    <div class="row g-4">
+        {% for crop, info in crops.items() %}
+        <div class="col-md-6 col-lg-4">
+            <a href="{{ url_for('crop_detail', crop_name=crop) }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 crop-card">
+                    <div class="card-body text-center p-4">
+                        <div class="crop-icon bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            {% if crop == 'Tomato' %}
+                                <i class="fas fa-apple-alt fa-lg"></i>
+                            {% elif crop == 'Potato' %}
+                                <i class="fas fa-seedling fa-lg"></i>
+                            {% elif crop == 'Corn' %}
+                                <i class="fas fa-wheat fa-lg"></i>
+                            {% elif crop in ['Apple', 'Cherry', 'Peach'] %}
+                                <i class="fas fa-apple-alt fa-lg"></i>
+                            {% elif crop == 'Grape' %}
+                                <i class="fas fa-wine-glass fa-lg"></i>
+                            {% elif crop == 'Pepper' %}
+                                <i class="fas fa-pepper-hot fa-lg"></i>
+                            {% elif crop == 'Strawberry' %}
+                                <i class="fas fa-heart fa-lg"></i>
+                            {% elif crop == 'Squash' %}
+                                <i class="fas fa-carrot fa-lg"></i>
+                            {% else %}
+                                <i class="fas fa-leaf fa-lg"></i>
+                            {% endif %}
+                        </div>
+                        <h5 class="card-title">{{ crop }}</h5>
+                        <p class="card-text text-muted">
+                            {{ info.planting.season }}
+                        </p>
+                        <small class="text-success">
+                            <i class="fas fa-calendar me-1"></i>
+                            {{ info.harvesting.time }}
+                        </small>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.crop-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.crop-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+</style>
+{% endblock %}
