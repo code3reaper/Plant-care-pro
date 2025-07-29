@@ -73,7 +73,7 @@ Plant Care Pro revolutionizes plant care by combining cutting-edge AI technology
 ![Disease Detection](https://via.placeholder.com/800x400/2d3748/ffffff?text=Disease+Detection+Interface)
 
 ### 💬 **AI Chat Assistant**
-![AI Chat](https://via.placeholder.com/800x400/2d3748/ffffff?text=AI+Chat+Assistant)
+![AI Chat](https://github.com/code3reaper/plant-care-pro/blob/main/application_images/ai_chat_assistant.png)
 
 </div>
 
