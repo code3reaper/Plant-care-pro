@@ -276,17 +276,6 @@ We love contributions! Here's how you can help make Plant Care Pro even better:
 
 ---
 
-## 🏆 Awards & Recognition
-
-<div align="center">
-
-![Agriculture Innovation](https://img.shields.io/badge/🏆_Best_Agricultural_Innovation-2024-gold?style=for-the-badge)
-![AI Excellence](https://img.shields.io/badge/🥇_AI_Excellence_Award-2024-silver?style=for-the-badge)
-![User Choice](https://img.shields.io/badge/👥_Users'_Choice-2024-bronze?style=for-the-badge)
-
-</div>
-
----
 
 ## 📊 Statistics
 
