@@ -5,7 +5,7 @@ from google import genai
 from google.genai import types
 
 # Initialize Gemini client
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", "AIzaSyAESm9eCl7ORHXyXJ6r8YJK0iO-7De43AY"))
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", "YOUR_HARDCODED_GEMINI_API_KEY"))
 
 def get_ai_response(user_message):
     """Get AI response for agricultural questions using Gemini"""
