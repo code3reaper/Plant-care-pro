@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # OpenWeatherMap API configuration
-API_KEY = os.environ.get("OPENWEATHER_API_KEY", "64938d187da356d6f4b298eec9118b32")
+API_KEY = os.environ.get("OPENWEATHER_API_KEY", "YOUR_HARDCODED_OPENWEATHER_API_KEY")
 BASE_URL = "http://api.openweathermap.org/data/2.5"
 
 def get_weather_data(location):
